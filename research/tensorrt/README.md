@@ -84,6 +84,22 @@ Precision:  FP16 [u'Doberman, Doberman pinscher', u'briard', u'otterhound, otter
 The script will generate or append to a file in the output_dir, `log.txt`,
 which includes the timing information for each of the models:
 
+```
+==========================
+network: native_imagenet_frozen_graph.pb,  batchsize 128, steps 100
+  fps   median: 670.6,  mean: 664.1,  uncertainty: 6.5,   jitter: 0.8
+  latency   median: 0.19089,  mean: 0.25054,  99th_p: 0.25119,  99th_uncertainty: 3.04235
+
+==========================
+network: tftrt_fp32_imagenet_frozen_graph.pb,  batchsize 128, steps 100
+  fps   median: 822.5,  mean: 814.2,  uncertainty: 8.1,   jitter: 0.9
+  latency   median: 0.15563,  mean: 0.24805,  99th_p: 0.24920,  99th_uncertainty: 4.71088
+
+==========================
+network: tftrt_fp16_imagenet_frozen_graph.pb,  batchsize 128, steps 100
+  fps   median: 1279.1,   mean: 1265.6,   uncertainty: 12.6,  jitter: 2.4
+  latency   median: 0.10007,  mean: 0.16619,  99th_p: 0.17133,  99th_uncertainty: 3.36558
+```
 
 The script will also output the GraphDefs used for each of the modes run,
 for future use and inspection:
@@ -91,4 +107,8 @@ for future use and inspection:
 ```
 ls /my/output
 log.txt
+tftrt_fp16_imagenet_frozen_graph.pb
+tftrt_fp32_imagenet_frozen_graph.pb
 ```
+
+TODO(tfboyd): Numbers/testing for int8?
