@@ -17,7 +17,7 @@ We provide some results below, as well as instructions for running this script.
 
 TODO(@tfboyd)
 
-## Running TensorFlow with TensorRT
+## How to Run This Script
 
 ### Step 1: Install Prerequisites
 
@@ -112,3 +112,15 @@ tftrt_fp32_imagenet_frozen_graph.pb
 ```
 
 TODO(tfboyd): Numbers/testing for int8?
+
+## Troubleshooting and Notes
+
+### GPU/Precision Compatibility
+
+Not all GPUs support the ops required for all precisions. For example, running
+int8 precision on a NVIDIA P100 will result in a segfault:
+
+```
+E tensorflow/contrib/tensorrt/log/trt_logger.cc:38] DefaultLogger Parameter check failed at: Network.cpp::addScale::118, condition: shift.count == 0 || shift.count == weightCount
+Segmentation fault (core dumped)
+```
