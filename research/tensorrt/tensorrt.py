@@ -210,7 +210,7 @@ def get_frozen_graph(graph_file):
 
 
 def get_tftrt_name(graph_name, precision_string):
-  return "tftrt_{}_{}".format(graph_name, precision_string.lower())
+  return "tftrt_{}_{}".format(precision_string.lower(), graph_name)
 
 
 def get_trt_graph(graph_name, graph_def, precision_mode, output_dir,
