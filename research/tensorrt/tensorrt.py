@@ -75,7 +75,7 @@ def preprocess_image(file_name, output_height=224, output_width=224,
       num_channels=num_channels,
       is_training=False)
 
-  with tf.Session() as sess:
+  with tf.Session(config=get_gpu_config()) as sess:
     result = sess.run([normalized])
 
   return result[0]
@@ -526,7 +526,7 @@ class TensorRTParser(argparse.ArgumentParser):
     )
 
     self.add_argument(
-        "--workspace_size", "-ws", type=long, default=1<<20,
+        "--workspace_size", "-ws", type=long, default=2<<30,
         help="[default: %(default)s] Workspace size in MB.",
         metavar="<WS>"
     )

@@ -72,8 +72,16 @@ This will print the predictions for each of the precision modes that were run
 (native, which is the native precision of the model passed in, as well
 as the TensorRT version of the graph at precisions of fp32, fp16, and int8):
 
+```
+INFO:tensorflow:Starting timing.
+INFO:tensorflow:Timing loop done!
+Predictions:
+Precision:  native [u'Doberman, Doberman pinscher', u'briard', u'otterhound, otter hound', u'komondor', u'malamute, malemute, Alaskan malamute']
+Precision:  FP32 [u'Doberman, Doberman pinscher', u'briard', u'otterhound, otter hound', u'komondor', u'malamute, malemute, Alaskan malamute']
+Precision:  FP16 [u'Doberman, Doberman pinscher', u'briard', u'otterhound, otter hound', u'komondor', u'malamute, malemute, Alaskan malamute']
+```
 
-The script will also generate a file in the output_dir, `log.txt`,
+The script will generate or append to a file in the output_dir, `log.txt`,
 which includes the timing information for each of the models:
 
 
@@ -83,6 +91,4 @@ for future use and inspection:
 ```
 ls /my/output
 log.txt
-tftrt_imagenet_frozen_graph.pb_fp16
-tftrt_imagenet_frozen_graph.pb_fp32
 ```
